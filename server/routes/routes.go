@@ -1,15 +1,24 @@
 package routes
 
 import (
-	"github.com/gorilla/mux"
+	"log"
+	"net/http"
+
 	"github.com/seew0/homiespace/controller"
 )
 
-func Router() *mux.Router {
-	router := mux.NewRouter()
+type Server struct {
+	port string
+}
 
-	router.HandleFunc("/api", controller.Welcome).Methods("GET")
-	router.HandleFunc("/api/create",controller.CreateListing).Methods("POST")
+func NewServer(port string) *Server {
+	return &Server{
+		port: port,
+	}
+}
 
-	return router
+func (s *Server) Run() {
+	http.HandleFunc("/api", controller.Welcome)
+	http.HandleFunc("/api/createlisting",controller.CreateListing)
+	log.Fatal(http.ListenAndServe(s.port, nil))
 }

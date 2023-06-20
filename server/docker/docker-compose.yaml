@@ -20,7 +20,7 @@ services:
     container_name:  PgAdmin
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: seew@admin.com
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: passwd
       PGADMIN_LISTEN_PORT: 80
     ports:

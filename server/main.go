@@ -2,21 +2,24 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net/http"
+	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/seew0/homiespace/db"
 	"github.com/seew0/homiespace/routes"
 )
 
+func init(){
+	err := godotenv.Load(".env")
+	if err != nil{
+		panic(err)
+	}
+}
+
 func main() {
 	db.Dbinit()
-
-	r := routes.Router()
-
-	fmt.Println("Starting Server")
+	port := os.Getenv("PORT")
+	server := routes.NewServer(port)
+	server.Run()
 	fmt.Println("Server is serving at port 4000")
-
-	log.Fatal(http.ListenAndServe(":4000", r))
-
 }

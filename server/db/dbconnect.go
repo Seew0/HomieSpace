@@ -8,11 +8,11 @@ import (
 	"gorm.io/gorm"
 )
 
-func Dbinit() *gorm.DB{
+func Dbinit() *gorm.DB {
 	db, err := gorm.Open(postgres.New(postgres.Config{
-		DSN: "host=localhost user=admin password=passwd dbname=postgres port=5010 sslmode=disable TimeZone=Asia/Kolkata",
-		PreferSimpleProtocol: true, 
-	  }), &gorm.Config{})
+		DSN:                  "host=localhost user=admin password=passwd dbname=postgres port=5010 sslmode=disable TimeZone=Asia/Kolkata",
+		PreferSimpleProtocol: true,
+	}), &gorm.Config{})
 
 	if err != nil {
 		panic("failed to connect database")

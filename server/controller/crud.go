@@ -15,7 +15,7 @@ func CreateListing(w http.ResponseWriter, r *http.Request) {
 	var house models.House
 
 	_ = json.NewDecoder(r.Body).Decode(&house)
-	fmt.Println(house)
 	db.InsertHouseIntoDB(&house)
+	fmt.Println(house)
 	json.NewEncoder(w).Encode(house)
 }
