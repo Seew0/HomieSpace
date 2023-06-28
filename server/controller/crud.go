@@ -9,7 +9,13 @@ import (
 	"github.com/seew0/homiespace/models"
 )
 
-func CreateListing(w http.ResponseWriter, r *http.Request) {
+
+func Welcome(w http.ResponseWriter,r *http.Request){
+	w.Header().Set("Content-Type","application/json")
+	json.NewEncoder(w).Encode("welcome to this api visit different routes to get data")
+}
+
+func CreateHouse(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	var house models.House

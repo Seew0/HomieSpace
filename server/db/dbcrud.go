@@ -1,10 +1,19 @@
 package db
 
-import "github.com/seew0/homiespace/models"
+import (
+	"fmt"
+	"log"
 
-var db = Dbinit()
+	"github.com/seew0/homiespace/models"
+)
 
+func  InsertHouseIntoDB(house *models.House) {
+	db := Connect()
+	creation := db.Create(&house)
 
-func InsertHouseIntoDB(house *models.House) {
-	db.Create(house)
+	if creation.Error != nil {
+		log.Fatal("Failed to create house entry: ", creation.Error)
+	}
+
+	fmt.Println("SUCCESSFULLY CREATED HOUSE ENTRY: ", house)
 }

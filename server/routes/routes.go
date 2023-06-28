@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -19,6 +20,8 @@ func NewServer(port string) *Server {
 
 func (s *Server) Run() {
 	http.HandleFunc("/api", controller.Welcome)
-	http.HandleFunc("/api/createlisting",controller.CreateListing)
+	http.HandleFunc("/api/createhouse",controller.CreateHouse)
+	fmt.Println("Server is running at port: ",s.port)
 	log.Fatal(http.ListenAndServe(s.port, nil))
+
 }
