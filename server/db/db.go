@@ -21,11 +21,8 @@ func NewDB(uri string) *DB {
 	}
 }
 
-func Connect() *gorm.DB{
+func Connect() *gorm.DB {
 	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
 	uri := os.Getenv("ElephantSqlURI")
 	Db, err := gorm.Open(postgres.Open(uri), &gorm.Config{})
 	if err != nil {
@@ -36,17 +33,16 @@ func Connect() *gorm.DB{
 	return Db
 }
 
-func (d *DB) MigrateModels(){
-	Db, err := gorm.Open(postgres.Open(d.uri), &gorm.Config{})
-	if err != nil {
-		log.Fatal("Failed to connect to Db: ", err)
+func (d *DB) MigrateModels() {
+	Db, erro := gorm.Open(postgres.Open(d.uri), &gorm.Config{})
+	if erro != nil {
+		log.Fatal("Failed to connect to DB: ", erro)
 	}
 
-	err = Db.AutoMigrate(&models.User{}, &models.House{}, &models.Rent{})
+	err := Db.AutoMigrate(&models.User{}, &models.Property{}, &models.Booking{})
 	if err != nil {
 		log.Fatal("Failed to migrate the Db: ", err)
 	}
 
-	fmt.Println("Db setup sucessfull")
+	fmt.Println("Db setup successful")
 }
-

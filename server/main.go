@@ -13,12 +13,12 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	uri := os.Getenv("ElephantSqlURI")
-	Db := db.NewDB(uri)
-	Db.MigrateModels()
 }
 
 func main() {
+	uri := os.Getenv("ElephantSqlURI")
+	Db := db.NewDB(uri)
+	Db.MigrateModels()
 	port := os.Getenv("PORT")
 	server := routes.NewServer(port)
 	server.Run()

@@ -39,7 +39,7 @@ const Login = () => {
   async function login(e) {
     try {
       e.preventDefault();
-      let response = await fetch("http://localhost:4000/api/v1/signin", {
+      let response = await fetch("http://localhost:4000/api/verifycredential", {
         method: "POST",
         body: JSON.stringify({
           email: username,

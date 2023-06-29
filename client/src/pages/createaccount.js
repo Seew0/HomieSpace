@@ -45,10 +45,9 @@ const CreateAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function Signup(event) {
-    event.preventDefault();
+  async function Signup() {
 
-    const response = await fetch("http://localhost:4000/api/v1/signup", {
+    const response = await fetch("http://localhost:4000/api/createuser", {
       method: "POST",
       body: JSON.stringify({ username, email, password }),
       headers: { "Content-Type": "application/json" },
@@ -186,7 +185,7 @@ const CreateAccount = () => {
                       color: "primary.contrastText",
                       borderRadius: 1,
                     }}
-                    onSubmit={Signup}
+                    onClick={Signup}
                   >
                     Create Account
                   </Button>
