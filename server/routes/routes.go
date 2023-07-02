@@ -26,5 +26,4 @@ func (s *Server) Run() {
 	http.HandleFunc("/api/createrent",controller.CreateRent)
 	fmt.Println("Server is running at port: ",s.port)
 	log.Fatal(http.ListenAndServe(s.port, nil))
-
 }

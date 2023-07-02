@@ -8,8 +8,13 @@ import (
 
 	"github.com/seew0/homiespace/db"
 	"github.com/seew0/homiespace/models"
-	"github.com/seew0/homiespace/utils"
+	"github.com/seew0/homiespace/services"
 )
+func enableCors(w *http.ResponseWriter) {
+(*w).Header().Set("Access-Control-Allow-Origin", "*")
+(*w).Header().Set("Access-Control-Allow-Headers","Content-Type")
+(*w).Header().Set("Content-Type", "application/json")
+}
 
 func Welcome(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -38,15 +43,17 @@ func CreateHouse(w http.ResponseWriter, r *http.Request) {
 
 func CreateUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	
+	enableCors(&w)
+	// w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+	
+	// w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	
 	// Handle preflight requests
-	if r.Method == "OPTIONS" {
-		w.WriteHeader(http.StatusOK)
-		return
-	}
+	// if r.Method == "OPTIONS" {
+	// 	w.WriteHeader(http.StatusOK)
+	// 	return
+	// }
 
 	var user models.User
 

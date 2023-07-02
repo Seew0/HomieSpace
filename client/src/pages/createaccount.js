@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "@mui/material/Link";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -44,6 +45,7 @@ const CreateAccount = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   async function Signup() {
 
@@ -53,9 +55,9 @@ const CreateAccount = () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    if (response.status === 201) {
+    if (response.status === 201 || response.status === "unknown") {
       alert("registration successful");
-      window.location.href = "http://localhost:3000/login";
+      history.push("/login");
     } else {
       alert("registration failed");
     }
