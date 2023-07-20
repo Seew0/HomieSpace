@@ -44,5 +44,5 @@ func (d *DB) MigrateModels() {
 		log.Fatal("Failed to migrate the Db: ", err)
 	}
 
-	fmt.Println("Db setup successful")
+	fmt.Println("Db setup successfully")
 }

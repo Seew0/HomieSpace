@@ -12,6 +12,8 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Helmet } from "react-helmet";
+import axios from "axios";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const theme = createTheme({
   palette: {
@@ -35,24 +37,23 @@ const theme = createTheme({
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   async function login(e) {
     try {
       e.preventDefault();
-      let response = await fetch("http://localhost:4000/api/verifycredential", {
-        method: "POST",
-        body: JSON.stringify({
-          email: username,
-          password: password,
-        }),
-        headers: { "Content-Type": "application/JSON" },
-        credentials: "include",
-      });
-      response = await response.json();
-      console.log(response);
+      let response = await axios.post(
+        "http://localhost:4000/api/verifycredential",
+        {
+          username,
+          password,
+        }
+      );
+      // response = await response.json();
+      // console.log(response.data.token);
       if (response.data.token) {
         localStorage.setItem("ResponseToken", response.data.token);
-        window.location.href = "http://localhost:3000/app/dashboard";
+        history.push("/app/dashboard");
       } else {
         alert("wrong credentials");
       }
@@ -62,7 +63,9 @@ const Login = () => {
   }
   return (
     <>
-    <Helmet><title>Login</title></Helmet>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <h1>
         <ThemeProvider theme={theme}>
           <Grid container component="main" sx={{ height: "100vh" }}>
@@ -181,7 +184,7 @@ const Login = () => {
                       color: "primary.contrastText",
                       borderRadius: 1,
                     }}
-                    onSubmit={login}
+                    onClick={login}
                   >
                     Log in
                   </Button>

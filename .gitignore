@@ -1,6 +1,5 @@
 client/node_modules
 client/postcss.config.js
 client/tailwind.config.js
-client/yarn-error.log
-client/yarn.lock
-
+server/bin
+server/.env

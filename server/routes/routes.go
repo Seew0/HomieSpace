@@ -2,10 +2,10 @@ package routes
 
 import (
 	"fmt"
-	"log"
-	"net/http"
 
+	"github.com/gin-gonic/gin"
 	"github.com/seew0/homiespace/controller"
+	"github.com/seew0/homiespace/middleware"
 )
 
 type Server struct {
@@ -19,11 +19,34 @@ func NewServer(port string) *Server {
 }
 
 func (s *Server) Run() {
-	http.HandleFunc("/api", controller.Welcome)
-	http.HandleFunc("/api/createuser",controller.CreateUser)
-	http.HandleFunc("api/verifycredential",controller.Verifycredential)
-	http.HandleFunc("/api/createhouse",controller.CreateHouse)
-	http.HandleFunc("/api/createrent",controller.CreateRent)
-	fmt.Println("Server is running at port: ",s.port)
-	log.Fatal(http.ListenAndServe(s.port, nil))
+	apiserver := gin.Default()
+
+	gin.SetMode(gin.ReleaseMode)
+
+	apiserver.Use(middleware.CORSmanager)
+
+	apiserver.GET("/api", func(ctx *gin.Context) {
+		controller.Welcome(ctx)
+	})
+
+	apiserver.POST("/api/createuser", func(ctx *gin.Context) {
+		controller.CreateUser(ctx)
+	})
+	apiserver.POST("/api/verifycredential", func(ctx *gin.Context) {
+		controller.Verifycredential(ctx)
+	})
+	apiserver.POST("/api/createhouse", func(ctx *gin.Context) {
+		controller.CreateHouse(ctx)
+	})
+	apiserver.POST("/api/createrent",func(ctx *gin.Context) {
+		controller.CreateRent(ctx)
+	})
+	
+	fmt.Println("Server is running at port: ", s.port)
+
+	err := apiserver.Run(s.port)
+	if err != nil {
+		panic(err)
+	}
+
 }

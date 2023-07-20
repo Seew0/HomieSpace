@@ -5,7 +5,6 @@ import (
 	"log"
 
 	"github.com/seew0/homiespace/models"
-	"github.com/seew0/homiespace/services"
 )
 
 func InsertHouseIntoDB(property *models.Property) {
@@ -21,13 +20,6 @@ func InsertHouseIntoDB(property *models.Property) {
 
 func InsertUserIntoDB(user *models.User) {
 	db := Connect()
-
-	Password := user.Password
-	Hashedpassword, err := utils.HashPassword(Password)
-	if err != nil {
-		log.Fatal("Failed to Hash Password: ", err)
-	}
-	user.Password = Hashedpassword
 
 	create := db.Create(&user)
 	if create.Error != nil {
@@ -48,14 +40,13 @@ func InsertRentalIntoDB(booking *models.Booking) {
 	fmt.Println("sucessfully created entry: ", booking)
 }
 
-func GetUserByID() ([]models.User, error) {
+func GetUserByID(userid uint ,data models.User) (error, string) {
 	db := Connect()
 
-	var data []models.User
-
-	err := db.Select("username", "password", "email").Find(&data).Error
+	err := db.Select("username", "password", "id").Find(&data).Where("id = ?",userid).Error
 	if err != nil {
-		return nil, err
+		return err,""
 	}
-	return data, nil
+	// fmt.Println(data)
+	return nil,data.Password
 }

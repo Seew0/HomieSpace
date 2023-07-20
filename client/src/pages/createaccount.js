@@ -11,6 +11,8 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Helmet } from "react-helmet";
+import axios from "axios";
+
 
 const theme = createTheme({
   palette: {
@@ -47,16 +49,19 @@ const CreateAccount = () => {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  async function Signup() {
+  async function Signup(e) {
+    e.preventDefault()
+    const response = await axios.post("http://localhost:4000/api/createuser",
+      {
+        username,
+        email,
+        password,
+      },
+    );
 
-    const response = await fetch("http://localhost:4000/api/createuser", {
-      method: "POST",
-      body: JSON.stringify({ username, email, password }),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (response.status === 201 || response.status === "unknown") {
-      alert("registration successful");
+    // console.log(response.status)
+    if (response.status === 200) {
+      alert("registration succesfull");
       history.push("/login");
     } else {
       alert("registration failed");

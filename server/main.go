@@ -17,9 +17,11 @@ func init() {
 
 func main() {
 	uri := os.Getenv("ElephantSqlURI")
+	port := os.Getenv("PORT")
+	
 	Db := db.NewDB(uri)
 	Db.MigrateModels()
-	port := os.Getenv("PORT")
+	
 	server := routes.NewServer(port)
 	server.Run()
 }
