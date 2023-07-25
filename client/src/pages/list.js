@@ -1,11 +1,11 @@
 import React from "react";
 
-const List = () =>{
+const Listing = () =>{
     return(
         <>
-        <h1>List</h1>
+        <h1>Listing</h1>
         </>
     )
 }
 
-export default List;
+export default Listing;

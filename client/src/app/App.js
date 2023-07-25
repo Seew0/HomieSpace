@@ -8,6 +8,10 @@ import {
 import Login from "../pages/login";
 import CreateAccount from "../pages/createaccount";
 import Home from "../pages/home";
+import Explore from "../pages/explore";
+import Dashboard from "../pages/dashboard";
+import Listing from "../pages/list";
+import error404 from "../pages/404";
 
 function App() {
   return (
@@ -17,7 +21,11 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/create-account" component={CreateAccount} />
           <Route path="/home" component={Home} />
-          <Redirect from="/" to="/login" />
+          <Route path="/explore" component={Explore} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/list" component={Listing} />
+          {/* <Route path="/*" component={error404}/> */}
+          <Redirect from="/" to="/home" />
         </Switch>
       </Router>
     </>

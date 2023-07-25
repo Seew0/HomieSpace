@@ -10,7 +10,7 @@ const error404 = () =>{
                 404
             </title>
         </Helmet>
-        <h1>LUND</h1>
+        
         </>
     );
 }

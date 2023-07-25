@@ -1,9 +1,12 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Explore = () =>{
     return(
         <>
-        <h1>Explore</h1>
+        <Helmet>
+            <title>Explore</title>
+        </Helmet>
         </>
     )
 }

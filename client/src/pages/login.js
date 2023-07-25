@@ -53,7 +53,7 @@ const Login = () => {
       // console.log(response.data.token);
       if (response.data.token) {
         localStorage.setItem("ResponseToken", response.data.token);
-        history.push("/app/dashboard");
+        history.push("/dashboard");
       } else {
         alert("wrong credentials");
       }
