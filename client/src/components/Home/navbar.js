@@ -20,13 +20,13 @@ const NavBar = () => {
           </a>
           <a
             onClick={() => smoothScroll("#review")}
-            className="text-[#F5F6FB] font-semibold"
+            className="text-[#F5F6FB] font-semibold cursor-pointer"
           >
             Reviews
           </a>
           <a
             onClick={() => smoothScroll("#contact")}
-            className="text-[#F5F6FB] font-semibold"
+            className="text-[#F5F6FB] font-semibold cursor-pointer"
           >
             Contact
           </a>

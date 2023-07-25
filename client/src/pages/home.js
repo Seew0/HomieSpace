@@ -5,6 +5,7 @@ import Strip from "../components/common/strip";
 import Card from "../components/Home/card";
 import Typewriter from "typewriter-effect";
 import ReviewSection from "../components/Home/review";
+import Footer from "../components/common/footer";
 
 const Home = () => {
   return (
@@ -14,7 +15,7 @@ const Home = () => {
       </Helmet>
       <div className="overflow-scroll">
         <div className="bg-[url('../img/background.jpg')] h-auto bg-no-repeat">
-          <div className="bg-black/30 h-full">
+          <div className="bg-black/70 h-full">
             <Strip />
             <NavBar />
             <main className="flex flex-col justify-center items-center h-[105vh]">
@@ -39,6 +40,7 @@ const Home = () => {
               <Card />
             </main>
             <ReviewSection />
+            <Footer/>
           </div>
         </div>
       </div>

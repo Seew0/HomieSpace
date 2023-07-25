@@ -11,3 +11,25 @@
 body {
   font-family: "Mukta", sans-serif;
 }
+ @keyframes glitch-animation {
+    0%, 100% {
+      transform: none;
+      color: inherit;
+    }
+    25% {
+      transform: translate(2px, -2px) scale(1);
+      color: #f00;
+    }
+    50% {
+      transform: translate(-2px, 2px) scale(1);
+      color: #0f0;
+    }
+    75% {
+      transform: translate(2px, 2px) scale(1);
+      color: #00f;
+    }
+  }
+
+  .glitchy-text {
+    animation: glitch-animation 1s infinite;
+  }

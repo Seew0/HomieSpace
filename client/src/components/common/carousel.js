@@ -15,10 +15,10 @@ const CarouselComponent = () => {
         showStatus={false}
         infiniteLoop={true}
         autoPlay={true}
-        interval={3000}
+        interval={8000}
         showArrows={true}
         showIndicators={false}
-        className="w-screen"
+        className="w-screen p-24"
       >
         <div className="flex justify-center items-center flex-col">
           <p className="text-4xl font-extrabold pb-6">

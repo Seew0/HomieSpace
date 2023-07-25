@@ -24,7 +24,7 @@ function App() {
           <Route path="/explore" component={Explore} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/list" component={Listing} />
-          {/* <Route path="/*" component={error404}/> */}
+          <Route path="/error" component={error404}/>
           <Redirect from="/" to="/home" />
         </Switch>
       </Router>
