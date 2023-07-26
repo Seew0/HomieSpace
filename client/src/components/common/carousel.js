@@ -9,7 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const CarouselComponent = () => {
   return (
     <div className="flex justify-center pt-24 flex-col items-center">
-      <p className=" text-7xl pb-24 font-bold">Few Reviews From Our Customers.</p>
+      {/* <p className=" text-7xl pb-24 font-bold">Few Reviews From Our Customers.</p> */}
       <Carousel
         showThumbs={false}
         showStatus={false}
@@ -54,7 +54,7 @@ const CarouselComponent = () => {
         <div className="flex justify-center items-center flex-col">
           <p className=" text-4xl font-extrabold pb-6">
             <span className=" text-white">"</span>HomieSpace made my
-            incredible India trip became an unforgettable experience! They
+            incredible India trip become an unforgettable experience! They
             expertly guided me to find the perfect place to stay, making it an
             enjoyable journey.<span className=" text-white">"</span>
           </p>

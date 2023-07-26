@@ -11,7 +11,7 @@ const ReviewSection = () => {
       <section
         id="review"
         ref={scrollRef}
-        className=" flex flex-col justify-center items-center h-full"
+        className=" h-full "
         style={{
           background: "hsla(30, 53%, 87%, 1)",
           backgroundImage:
@@ -24,11 +24,11 @@ const ReviewSection = () => {
             "progid: DXImageTransform.Microsoft.gradient( startColorstr='#F0DFCE', endColorstr='#EEDCC9', GradientType=1 )",
         }}
       >
-        <div className="bg-black/20">
+        <div className="bg-black/10 flex flex-col justify-center items-center">
           <p className="p-24 text-7xl text-black font-bold">Why Choose Us</p>
           <div>
             <div className="mx-auto px-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-64">
                 <div className="p-4 flex justify-center flex-col items-center">
                   <EscalatorWarningRoundedIcon sx={{ fontSize: 80 }} />
                   <h3 className="feature-title text-xl font-semibold mt-2">
