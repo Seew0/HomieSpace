@@ -7,6 +7,7 @@ const Explore = () =>{
         <Helmet>
             <title>Explore</title>
         </Helmet>
+        <div></div>
         </>
     )
 }

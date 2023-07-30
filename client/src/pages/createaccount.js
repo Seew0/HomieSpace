@@ -19,7 +19,7 @@ const theme = createTheme({
     primary: {
       light: "#757ce8",
       main: "#3f50b5",
-      dark: "#121212",
+      dark: "#0f172a",
       contrastText: "#fff",
       labelColor: "#808080",
     },
@@ -114,6 +114,12 @@ const CreateAccount = () => {
                   alignItems: "center",
                 }}
               >
+                <a
+                  className=" text-5xl text-white font-bold pb-24"
+                  href="/home"
+                >
+                  HomieSpace.
+                </a>
                 <Typography
                   component="h1"
                   variant="h4"

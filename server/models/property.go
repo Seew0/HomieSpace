@@ -2,7 +2,7 @@ package models
 
 type Property struct {
 	ID          uint      `json:"id" gorm:"primary_key"`
-	HouseNo       int    `json:"houseNo,omitempty"`
+	HouseTitle  string    `json:"house-title,omitempty"`
 	Description string    `json:"desc,omitempty"`
 	RentPerDay  int       `json:"rentperday,omitempty"`
 	Location    string    `json:"location,omitempty"`
