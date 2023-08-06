@@ -27,11 +27,11 @@ const Home = () => {
                   options={{
                     strings: [
                       "Live.",
-                      "Laugh XD",
-                      "Love ;)",
-                      "Party !",
+                      "Laugh.",
+                      "Love.",
+                      "Party.",
                       "Enjoy.",
-                      "Make Memories :D",
+                      "Make Memories.",
                     ],
                     autoStart: true,
                     loop: true,

@@ -35,8 +35,8 @@ func (s *Server) Run() {
 	apiserver.POST("/api/verifycredential", func(ctx *gin.Context) {
 		controller.Verifycredential(ctx)
 	})
-	apiserver.POST("/api/createhouse", func(ctx *gin.Context) {
-		controller.CreateHouse(ctx)
+	apiserver.POST("/api/addlisting", func(ctx *gin.Context) {
+		controller.AddListing(ctx)
 	})
 	apiserver.POST("/api/createrent",func(ctx *gin.Context) {
 		controller.CreateRent(ctx)

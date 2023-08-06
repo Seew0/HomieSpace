@@ -11,6 +11,7 @@ func InsertHouseIntoDB(property *models.Property) {
 	db := Connect()
 	creation := db.Create(&property)
 
+
 	if creation.Error != nil {
 		log.Fatal("Failed to create property entry: ", creation.Error)
 	}
@@ -43,7 +44,7 @@ func InsertRentalIntoDB(booking *models.Booking) {
 func GetUserByID(userid uint ,data models.User) (error, string) {
 	db := Connect()
 
-	err := db.Select("username", "password", "id").Find(&data).Where("id = ?",userid).Error
+	err := db.Select("username", "password", "user_id").Find(&data).Where("id = ?",userid).Error
 	if err != nil {
 		return err,""
 	}

@@ -22,17 +22,19 @@ func Welcome(c *gin.Context) {
 	var w http.ResponseWriter = c.Writer
 	w.Header().Set("Content-Type", "application/json")
 	c.IndentedJSON(http.StatusOK, nil)
-	json.NewEncoder(w).Encode("welcome to this api visit different routes to get data")
+	c.JSON(200,gin.H{"message":"welcome to the server"})
 }
 
-func CreateHouse(c *gin.Context) {
+func AddListing(c *gin.Context) {
 	var w http.ResponseWriter = c.Writer
 	var r *http.Request = c.Request
 	w.Header().Set("Content-Type", "application/json")
 
 	var property models.Property
 
-	_ = json.NewDecoder(r.Body).Decode(&property)
+	c.BindJSON(&property)
+	fmt.Println(property)
+	defer r.Body.Close()
 
 	db.InsertHouseIntoDB(&property)
 	// fmt.Println(property)
@@ -155,8 +157,9 @@ func Verifycredential(c *gin.Context) {
 	}
 
 	data := new(models.User)
+	fmt.Println(data.UserID)
 
-	er, hashedpass := db.GetUserByID(user.ID, *data)
+	er, hashedpass := db.GetUserByID(user.UserID, *data)
 	if er != nil {
 		log.Printf("Failed to retrieve user from the database: %v", er)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to retrieve user"})
