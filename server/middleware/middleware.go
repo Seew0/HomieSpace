@@ -22,7 +22,7 @@ func VerifyAuth(c *gin.Context) bool {
 			c.JSON(500, gin.H{"error": "unexpected signing method"})
 		}
 
-		return []byte(os.Getenv("jwtKey")), nil
+		return []byte(os.Getenv("JWT_SECRET")), nil
 	})
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
